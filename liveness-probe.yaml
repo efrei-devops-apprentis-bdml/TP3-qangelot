@@ -1,0 +1,22 @@
+apiVersion: 2022-06-17
+location: 'france central'
+name: livenesstest
+properties:
+  containers:
+  - name: 20180532
+    properties:
+      image: efreidevops.azurecr.io/20210262:v1
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      livenessProbe:
+        httpGet:
+          path: /health
+        periodSeconds: 5
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
