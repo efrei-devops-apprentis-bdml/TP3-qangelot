@@ -73,6 +73,12 @@ jobs:
 - On construit et publie l'image sur le DockerHub
 - On déploie cette image sur Azure en spécifiant le resouce groupe, l'image, les credentials et les variables d'environnement requises.
 
+## Points d'intérêt 
+
+- dans le code applicatif, on specifie l'host et le port: host = "0.0.0.0" et port=80
+- enfin, dans le fichier Dockerfile, on expose le port 80
+- par défaut, chez Azure le port utilisé est le port 80.
+
 ## Usage 
 
 ![image](https://user-images.githubusercontent.com/57401552/174299823-3418eb9f-1219-4f47-816a-b513392c125a.png)
