@@ -79,6 +79,19 @@ jobs:
 - enfin, dans le fichier Dockerfile, on expose le port 80
 - par défaut, chez Azure le port utilisé est le port 80.
 
+## Hadolint
+
+Ce linter valide les meilleures pratiques décrites par Docker et adopte une approche soignée pour analyser le fichier Docker que vous devez vérifier.
+
+On ajoute cette commande dans le fichier yaml original : 
+```
+uses: hadolint/hadolint-action@v2.0.0
+with:
+  dockerfile: Dockerfile
+```
+
 ## Usage 
 
 ![image](https://user-images.githubusercontent.com/57401552/174299823-3418eb9f-1219-4f47-816a-b513392c125a.png)
+
+
