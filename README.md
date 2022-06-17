@@ -5,6 +5,12 @@
 Github Actions
 * Mettre à disposition son code dans un repository Github
 
+## Intérêts
+
+* Bénéficier de la puissance de Github et notamment du versioning. 
+* Les GitHub Actions permettent d'automatiser facilement tout le workflow : on peut créer, tester et déployer le code directement depuis GitHub.
+* Cela permet aussi le travail collaboratif : faire fonctionner les revues de code, la gestion des branches et le tri des problèmes.
+
 ## Ressources 
 
 https://docs.microsoft.com/en-us/azure/container-instances/container-instances-
