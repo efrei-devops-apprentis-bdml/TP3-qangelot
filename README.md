@@ -85,7 +85,7 @@ jobs:
 - enfin, dans le fichier Dockerfile, on expose le port 80
 - par défaut, chez Azure le port utilisé est le port 80.
 
-## Hadolint
+## Add hadolint au workflow
 
 Ce linter valide les meilleures pratiques décrites par Docker et adopte une approche soignée pour analyser le fichier Docker que vous devez vérifier.
 
@@ -95,6 +95,21 @@ uses: hadolint/hadolint-action@v2.0.0
 with:
   dockerfile: Dockerfile
 ```
+
+## Configuration d'une probe liveness HTTP
+
+On ajoute un second fichier yaml à la racine du repository et l'on y place les éléments nécessaires à la mise en place d'une probe liveness. On rajoute les lignes nécessaires à l'execution de celle-ci dans la Github Action : 
+
+```
+azcliversion: 2.30.0
+inlineScript: |
+  az container create --resource-group ${{ secrets.RESOURCE_GROUP }} --image ${{ secrets.REGISTRY_LOGIN_SERVER }}/20210262:v1 --dns-name-label devops-20210262 --registry-login-server ${{ secrets.REGISTRY_LOGIN_SERVER }} --registry-username ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --secure-environment-variables API_KEY=${{ secrets.API_KEY }} --location 'france central' --ports 80 -f liveness-probe.yaml
+          
+```
+
+On la configure pour s'executer toute les 5sec. 
+
+Un problème se pose néanmoins car il semblerait que Azure Cli ne permettent pas de passer les secrets stocker dans le repository Github. On préfère en rester là afin d'éviter que des données sensibles ne soient stockées dans l'image ou le code source.
 
 ## Usage 
 
